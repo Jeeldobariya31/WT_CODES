@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>p4</title>
+        
+</head>
+
+<body>
+        <script>
+                        let a=parseInt(prompt("give first number :"))
+                        let b=parseInt(prompt("give second number :"))
+                         document.write("<h1> gcd of "+a+"&"+b+"is : </h1>")
+                        if(a===b){
+                                document.write("<h3>YOu has been entered same number tharfore the given number is your ans </h3>")
+                        }
+
+                        let result = Math.min(a, b);
+                        while (result > 0) {
+                                if (a % result == 0 && b % result == 0) {
+                                        break;
+                                }
+                                result--;
+                        }
+
+               
+                document.write("<h3> GCD of ", a, " and ", b, " is : "+ result+"</h3>");
+        </script>
+</body>
+
+</html>

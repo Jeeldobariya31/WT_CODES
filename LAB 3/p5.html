@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+        <h1>Your Array :</h1>
+        <h2 id="dis"></h2>
+        <button id="btn" onclick="print()">click to find</button>
+        <script>
+                let display = document.querySelector("#dis")
+                let size = parseInt(prompt("Enter Array Size :"))
+                let a = [size]
+
+                for (i = 0; i < size; i++) {
+                        temp = prompt("Enter Array element " + (i + 1) + ":")
+                        a[i] = temp
+                }
+                
+                string = ""
+                for (i = 0; i < size; i++) {
+
+                        temp = a[i]
+                        string = string + temp + " ,"
+                
+                }
+                display.innerText = string
+                flag=true
+
+                function print(){
+                        word = prompt("Enter word for find index :")
+                        for (i = 0; i < size; i++) {
+                                if (word == a[i]) {
+                                        alert("=> Your Index Is :" + i);
+                                        flag=false
+                                        break;
+                                        
+                                }
+                                
+
+                        }
+
+                        if (flag) {
+                                alert("=> OOOPS!!! Your Word Not Found ");
+                        }
+                }
+
+        </script>
+</body>
+
+</html>

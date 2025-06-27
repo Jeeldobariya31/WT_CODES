@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Event Detector</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+            border: 2px solid black;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">Hover / Click / Right-click me</div>
+    <p id="output" style="text-align: center; font-size: 18px; color: darkblue;"></p>
+
+    <script>
+        const box = document.getElementById("box");
+        const output = document.getElementById("output");
+
+        box.addEventListener("click", () => {
+          output.innerText = "Mouse Event: Click";
+            console.log()
+        });
+
+        box.addEventListener("dblclick", () => {
+           output.innerText = "Mouse Event: Double Click";
+        });
+
+        box.addEventListener("contextmenu", (e) => {
+            e.preventDefault(); // prevent right-click menu
+           output.innerText = "Mouse Event: Right Click";
+        });
+
+        box.addEventListener("mouseover", () => {
+            output.innerText = "Mouse Event: Mouse Over";
+        });
+
+        box.addEventListener("mouseout", () => {
+            output.innerText = "Mouse Event: Mouse Out";
+        });
+
+        box.addEventListener("mousedown", () => {
+            output.innerText = "Mouse Event: Mouse Down";
+        });
+
+        box.addEventListener("mouseup", () => {
+           output.innerText = "Mouse Event: Mouse Up";
+        });
+
+        box.addEventListener("mousemove", () => {
+            output.innerText = "Mouse Event: Mouse Move";
+        });
+    </script>
+
+</body>
+</html>

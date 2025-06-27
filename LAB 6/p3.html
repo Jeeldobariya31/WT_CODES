@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keyboard Event Detector</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+            border: 2px solid black;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">Press any key</div>
+    <p id="output" style="text-align: center; font-size: 18px; color: darkblue;"></p>
+
+    <script>
+        const output = document.getElementById("output");
+
+        document.addEventListener("keydown", () => {
+            output.innerText = "Key Event: Key Down";
+        });
+
+        document.addEventListener("keypress", () => {
+            output.innerText = "Key Event: Key Press";
+        });
+
+        document.addEventListener("keyup", () => {
+           output.innerText = "Key Event: Key Up";
+        });
+    </script>
+
+</body>
+</html>

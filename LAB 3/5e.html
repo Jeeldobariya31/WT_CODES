@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+        <script>
+                arr = ["hello world", "from js"]
+                word = prompt("enter the word")
+                idx1 = -1
+                idx2 = -1
+                a = []
+                for (i = 0; i < 2; i++) {
+
+                        a = arr[i].split(" ")
+
+                        for (j = 0; j < 2; j++) {
+                                if (a[j] === word) {
+                                        idx2 = j
+                                        idx1 = i
+
+
+                                }
+                        }
+
+                }
+                document.write(idx1)
+                document.write(idx2)
+
+
+
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+        <h1>Output here :</h1>
+        <h2 id="dis"></h2>
+        <script>
+                 let display=document.querySelector("#dis")
+                 let size=parseInt(prompt("Enter Array Size :"))
+                let arr=[size]
+                for(i=0;i<size;i++){
+                  temp=parseInt(prompt("Enter Array element "+(i+1)+":"))
+                  arr[i]=temp
+                }
+                for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            string=""
+                 for (i = 0; i < size; i++) {
+                        
+                        temp=arr[i]
+                        string=string+temp+" ,"
+                }
+                display.innerText=string
+
+
+        </script>
+</body>
+</html>

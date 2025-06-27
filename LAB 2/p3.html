@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>p3</title>
+</head>
+
+<body>
+        <script>
+                document.write("<h1>* Patern 1</h1><br/>")
+                for (i = 1; i <= 5; i++) {
+                        for (j = 1; j <= 5; j++) {
+                                if (j == 1 || j == 5 || i == 1 || i == 5) {
+                                        document.write("*&nbsp")
+                                }
+                                else {
+                                        document.write("&nbsp&nbsp&nbsp")
+                                }
+                        }
+                        document.write("<br/>")
+
+                }
+                document.write("<h1>* Patern 2</h1><br/>")
+                for (i = 5; i >= 1; i--) {
+                        for (j = 1; j <= i; j++) {
+
+                                document.write("#&nbsp")
+
+                        }
+                        document.write("<br/>")
+
+                }
+                document.write("<h1>* Patern 3</h1><br/>")
+                m=1
+                for (i = 1; i <= 4; i++) {
+                        for (j = 1; j <= i; j++) {
+
+                                document.write(m+"&nbsp")
+                                m++
+
+                        }
+                        document.write("<br/>")
+
+                }
+
+
+        </script>
+</body>
+
+</html>

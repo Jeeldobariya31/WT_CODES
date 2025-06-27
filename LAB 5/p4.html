@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Data Validation</title>
+  <style>
+    body { font-family: Arial; background: #f0f8ff; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input { padding: 5px; width: 250px; }
+    #message { color: red; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>User Registration Form</h2>
+  <form id="userForm" onsubmit="validateForm()">
+    <label>Username: <input type="text" id="username"></label>
+    <label>Password: <input type="password" id="password"></label>
+    <label>Repeat Password: <input type="password" id="repeatPassword"></label>
+    <label>Date of Birth: <input type="date" id="dob"></label>
+    <label>Enrollment No: <input type="text" id="enrollment"></label>
+    <label>Email: <input type="email" id="email"></label>
+    <br>
+    <button type="submit" onclick="validateForm()">Submit</button>
+    <button type="Reset" onclick="reset()">Reset</button>
+    <div id="message"></div>
+  </form>
+
+  <script>
+    let flag =0;
+    function reset(){
+      location.reload();
+    }
+function validateForm() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+  const repeatPassword = document.getElementById("repeatPassword").value;
+  const dob = document.getElementById("dob").value;
+  const enrollment = document.getElementById("enrollment").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message");
+
+ 
+  message.innerHTML = "";
+
+  // 1. Username validation (min 8 characters)
+  const usernameReg = /^.{8,}$/;
+  if (!usernameReg.test(username)) {
+    message.innerHTML += "➣ Username must be at least 8 characters long.<br/>";
+   flag=1
+  }
+
+  // 2. Password validation (8-12 chars, at least 1 digit and 1 special character)
+  const passwordReg = /^(?=.*\d)(?=.*[\W_]).{8,12}$/;
+  if (!passwordReg.test(password)) {
+    message.innerHTML += "➣ Password must be 8-12 characters long with at least one digit and one special character.<br/>";
+   flag=1
+  }
+
+  // 3. Password match
+  if (password !== repeatPassword) {
+    message.innerHTML += "➣ Passwords do not match.<br/>";
+   flag=1
+  }
+
+  // 4. Age validation (greater than 18)
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  if (age <= 18) {
+    message.innerHTML += "➣ You must be older than 18.<br/>";
+    flag=1
+  }
+
+  // 5. Enrollment number must be exactly 11 digits
+  const enrollmentReg = /^\d{11}$/;
+  if (!enrollmentReg.test(enrollment)) {
+    message.innerHTML += "➣ Enrollment number must be exactly 11 digits.<br/>";
+  flag=1
+  }
+
+  // 6. Email format validation
+  const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailReg.test(email)) {
+    message.innerHTML += "➣ Invalid email format.<br/>";
+ flag=1
+  }
+
+if(flag==0){
+  message.innerHTML+="FORM SUBMITED SUCSSESFULY ✅"
+  msg()
+}
+else if(flag==1){
+ message.innerHTML+="FORM NOT  SUBMITED ❎"
+}
+}
+  </script>
+
+</body>
+</html>

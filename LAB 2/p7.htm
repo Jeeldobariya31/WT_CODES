@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p7</title>
+</head>
+
+<body>
+    <script>
+        let string = prompt("Enter a string:");
+        document.write("<h1>Your string is :"+string+"</h1><br/>")
+        let firstIndex = string.indexOf('a');
+        let lastIndex = string.lastIndexOf('a');
+
+        if (firstIndex === -1) {
+            document.write("No 'a' found in the string.");
+        } else if (firstIndex === lastIndex) {
+            document.write("Only one 'a' found at position " + (firstIndex + 1));
+        } else {
+            let between = string.substring(firstIndex + 1, lastIndex);
+            document.write(
+                "First 'a' at position " + (firstIndex + 1) +
+                ", Last 'a' at position " + (lastIndex + 1) +
+                ", String between: '" + between + "'"
+            );
+        }
+    </script>
+</body>
+
+</html>

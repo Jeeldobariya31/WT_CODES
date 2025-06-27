@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>p5</title>
+</head>
+<body>
+        <script>
+                let num=parseInt(prompt("give number :"))
+                 document.write("<h1>multiplication of first digit it self of num"+num+"to last digit time is  : </h1>")
+                temp=num
+                count=0
+                while (num != 0) {
+                
+                        num = parseInt(num/ 10) ;
+                        count=count+1
+        
+                }
+                if(count==2){
+                lastdigit=temp%10
+                firstdigit=parseInt(temp/10)
+                ans=Math.pow(firstdigit,lastdigit)
+                document.write("Your ans is :"+ans)
+                }
+                else{
+                    document.write("Plese Enter 2 digit number")
+                }
+
+        </script>
+</body>
+</html>

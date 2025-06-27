@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+    </style>
+</head>
+<body>
+    <div align="left">
+    <form action="">
+        <table cellpadding="10">
+            <caption>STUDENT REGISTRATION</caption>
+            <br>
+           <tr>
+            <td><label for="fullname">fullname</label></td>
+            <td><input type="text" placeholder="enter your name" required id="fullname"></td>
+           </tr>
+           <tr>
+            <td><label for="email">email</label></td>
+            <td><input type="text" placeholder="enter your email" required id="email"></td>
+           </tr>
+           <tr>
+            <td><label for="mobilenumber">Mobile number</label></td>
+            <td><input type="text" placeholder="enter your mobile number" required id="mobilenumber"></td>
+           </tr>
+           <tr>
+            <td><label for="add">Address</label></td>
+            <td><textarea name="add" id="add" required placeholder="enter your address"></textarea></td>
+           </tr>
+           <tr>
+            <td><label for="nl">nationality</label></td>
+            <td><input type="text" placeholder="enter your nationality" required id="nl"></td>
+           </tr>
+           <tr>
+            <td><label for="db">nationality</label></td>
+            <td><input type="date" placeholder="enter your date of birth" required id="db"></td>
+           </tr>
+           <tr>
+            <td><label>gender</label></td>
+            <td><input type="radio" id="a" name="gender"><label for="a">male</label>
+            <input type="radio" id="b" name="gender"><label for="b">female</label></td>
+           </tr>
+           <tr>
+            <td><label for="dg">Higest Degree</label></td>
+            <td><select name="degree" id="dg" required>
+                 <option disabled selected>select degree</option>
+                 <option>B.TECH</option>
+                 <option>M.TECH</option>
+                 <option>BSC</option>
+                 <option>MSC</option>
+                 <option>BCA</option>
+                 <option>BBA</option>
+                 <option>MCA</option>
+                 <option>MBA</option>
+                 <option>BE</option>
+                 <option>ME</option>
+                 <option>DIPLOMA</option>
+            </select>
+           </td>
+           </tr>
+           <tr>
+            <td><label for="CPI">CPI</label></td>
+            <td><input type="text" placeholder="enter your cpi" required id="CPI">
+                <select name="degree" id="dg" required>
+                    <option disabled selected>select Backlog</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>DETAINDED IN COLLEGE</option>
+               </select>
+            </td>
+           </tr>
+           <tr>
+            <td><label for="uni">fullname</label></td>
+            <td><input type="text" placeholder="enter your university" required id="uni"></td>
+           </tr>
+           <td><label for="y">passing year</label></td>
+            <td><select name="year" id="y" required>
+                 <option disabled selected>select year</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+            </select>
+           </td>
+           </tr>
+           <tr>
+            <td><input type="submit" value="SUBMIT" onclick="Swal.fire()"></td>
+            <td><input type="reset" value="RESET" ></td>
+           </tr>
+        </table>
+    </form>
+</div>
+<script>
+Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+</script>
+</body>
+</html>

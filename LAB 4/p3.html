@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Table</title>
+</head>
+<body>
+
+</table>
+
+<script>
+  // Student data
+  const students = [
+    { roll: 1, name: "Jeel", age: 18, grade: "A" },
+    { roll: 2, name: "Mira", age: 19, grade: "B+" },
+    { roll: 3, name: "Raj", age: 17, grade: "A+" },
+    { roll: 4, name: "Anya", age: 18, grade: "B" },
+    { roll: 5, name: "Dev", age: 20, grade: "A" }
+  ];
+document.write("<table border='1'>");
+         document.write("<tr>");
+                        document.write(`<td>roll no</td>`)
+                         document.write(`<td>name</td>`)
+                          document.write(`<td>age</td>`)
+                           document.write(`<td>grad</td>`)
+                        document.write("</tr>");
+        for(i=0;i<students.length;i++){
+                document.write("<tr>");
+                        document.write(`<td>${students[i].roll}</td>`)
+                         document.write(`<td>${students[i].name}</td>`)
+                          document.write(`<td>${students[i].age}</td>`)
+                           document.write(`<td>${students[i].grade}</td>`)
+                        document.write("</tr>");
+        }
+        document.write("</table>");
+  
+    </script>
+
+</body>
+</html>

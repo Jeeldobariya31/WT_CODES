@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+        <script>
+                let n=parseInt(prompt("Enter number "))
+                temp1=n
+                temp2=n
+                ans=0
+                count=0
+                while (n != 0) {
+                
+                        n = parseInt(n/ 10) ;
+                        count=count+1
+        
+                }
+                while(temp1!=0){
+                        rim=temp1%10
+                        ans=ans+Math.pow(rim,count)
+                          temp1= parseInt(temp1/ 10) ;
+
+                }
+                if(temp2==ans){
+                        document.write("Given number is Armstrong")
+                }
+                else{
+                         document.write("Given number is not armstrong")
+                }
+        </script>
+</body>
+
+</html>
