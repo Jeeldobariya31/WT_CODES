@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Key Event Handler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s;
+            padding: 20px;
+        }
+        #output {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Press any key on your keyboard</h2>
+<div id="output">Key code will appear here...</div>
+
+<script>
+    document.addEventListener("keydown", function(event) {
+        document.body.style.backgroundColor = "pink";
+        
+        const key = event.key.toLowerCase(); 
+        const code = event.keyCode ;
+        
+        let message = `Key Pressed: ${key.toUpperCase()} (Code: ${code})`;
+
+        if ("aeiou".includes(key)) {
+            message += ` → Vowel "${key.toUpperCase()}" is pressed!`;
+        }
+
+        document.getElementById("output").textContent = message;
+    });
+
+    document.addEventListener("keyup", function(event) {
+        document.body.style.backgroundColor = "lightblue";
+    });
+</script>
+
+</body>
+</html>

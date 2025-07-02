@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Events </title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    input, select, textarea {
+      margin-bottom: 15px;
+      display: block;
+      padding: 10px;
+      width: 300px;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      color: aqua;
+      background-color: #f0f;
+      border: 1px solid #ccc;
+      width: 320px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Form Event Detector</h2>
+  
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="email" id="email" placeholder="Enter Email">
+    <textarea id="msg" placeholder="Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="output">Event Output:</div>
+
+  <script>
+    const form = document.getElementById("myForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const msgTextarea = document.getElementById("msg");
+    const output = document.getElementById("output");
+
+    function Fire(eventName) {
+      output.innerHTML = "Event Output:"+`<br>${eventName} event fired`;
+    }
+
+    // Form level events
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      Fire("submit");
+    });
+
+    // Input field events
+    nameInput.addEventListener("focus", () => Fire("focus on name"));
+    nameInput.addEventListener("blur", () => Fire("blur on name"));
+    nameInput.addEventListener("change", () => Fire("change on name"));
+    nameInput.addEventListener("input", () => Fire("input on name"));
+
+    emailInput.addEventListener("focus", () => Fire("focus on email"));
+    emailInput.addEventListener("blur", () => Fire("blur on email"));
+    emailInput.addEventListener("change", () => Fire("change on email"));
+    emailInput.addEventListener("input", () => Fire("input on email"));
+
+    msgTextarea.addEventListener("focus", () => Fire("focus on message"));
+    msgTextarea.addEventListener("blur", () => Fire("blur on message"));
+    msgTextarea.addEventListener("input", () => Fire("input on message"));
+  </script>
+
+</body>
+</html>

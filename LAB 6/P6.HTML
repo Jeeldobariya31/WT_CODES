@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div align="left">
+    <form id="regForm">
+      <table cellpadding="10">
+        <caption><strong>STUDENT REGISTRATION</strong></caption>
+
+        <tr>
+          <td><label for="fullname">Full Name</label></td>
+          <td><input type="text" id="fullname" placeholder="Enter your name"></td>
+        </tr>
+
+        <tr>
+          <td><label for="email">Email</label></td>
+          <td><input type="text" id="email" placeholder="Enter your email"></td>
+        </tr>
+
+        <tr>
+          <td><label for="mobilenumber">Mobile Number</label></td>
+          <td><input type="text" id="mobilenumber" placeholder="Enter your mobile number"></td>
+        </tr>
+
+        <tr>
+          <td><label for="add">Address</label></td>
+          <td><textarea id="add" placeholder="Enter your address"></textarea></td>
+        </tr>
+
+        <tr>
+          <td><label for="nl">Nationality</label></td>
+          <td><input type="text" id="nl" placeholder="Enter your nationality"></td>
+        </tr>
+
+        <tr>
+          <td><label for="db">Date of Birth</label></td>
+          <td><input type="date" id="db"></td>
+        </tr>
+
+        <tr>
+          <td><label>Gender</label></td>
+          <td>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="enrollment">Enrollment No</label></td>
+          <td><input type="text" id="enrollment" placeholder="Enter 11 digit enrollment no"></td>
+        </tr>
+
+        <tr>
+          <td><label for="password">Password</label></td>
+          <td><input type="password" id="password" placeholder="Enter password"></td>
+        </tr>
+
+        <tr>
+          <td><label for="repeatPassword">Repeat Password</label></td>
+          <td><input type="password" id="repeatPassword" placeholder="Repeat password"></td>
+        </tr>
+
+        <tr>
+          <td><input type="submit" value="SUBMIT"></td>
+          <td><input type="reset" value="RESET"></td>
+        </tr>
+      </table>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    document.getElementById("regForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent form from submitting
+      
+      let flag = 0;
+      const fullname = document.getElementById("fullname").value.trim();
+      const password = document.getElementById("password").value;
+      const repeatPassword = document.getElementById("repeatPassword").value;
+      const dob = document.getElementById("db").value;
+      const enrollment = document.getElementById("enrollment").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message");
+      message.innerHTML = "";
+
+      // Username validation
+      const nameReg = /^.{8,}$/;
+      if (!nameReg.test(fullname)) {
+        message.innerHTML += "➣ Full Name must be at least 8 characters long.<br/>";
+        flag = 1;
+      }
+
+      // Password validation
+      const passwordReg = /^(?=.*\d)(?=.*[\W_]).{8,12}$/;
+      if (!passwordReg.test(password)) {
+        message.innerHTML += "➣ Password must be 8-12 characters long with at least one digit and one special character.<br/>";
+        flag = 1;
+      }
+
+      // Password match
+      if (password !== repeatPassword) {
+        message.innerHTML += "➣ Passwords do not match.<br/>";
+        flag = 1;
+      }
+
+      // Age validation
+      const birthDate = new Date(dob);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      if (age <= 5) {
+        message.innerHTML += "➣ You must be older than 5.<br/>";
+        flag = 1;
+      }
+
+      // Enrollment number validation
+      const enrollmentReg = /^\d{11}$/;
+      if (!enrollmentReg.test(enrollment)) {
+        message.innerHTML += "➣ Enrollment number must be exactly 11 digits.<br/>";
+        flag = 1;
+      }
+
+      // Email format validation
+      const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailReg.test(email)) {
+        message.innerHTML += "➣ Invalid email format.<br/>";
+        flag = 1;
+      }
+
+      if (flag === 0) {
+        message.innerHTML += "✅ Form submitted successfully!";
+      } else {
+        message.innerHTML += "<br>❌ Form submission failed. Please fix the errors.";
+      }
+    });
+  </script>
+</body>
+</html>

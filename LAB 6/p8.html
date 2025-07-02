@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: black;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #timeDisplay {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="mainHeading">Hover Over Me!</h1>
+
+  <button onclick="showTime()">Find Time</button>
+  <button onclick="changeColor('red')">Red</button>
+  <button onclick="changeColor('green')">Green</button>
+
+  <div id="timeDisplay"></div>
+
+  <script>
+    
+    const heading = document.getElementById("mainHeading");
+
+    heading.addEventListener("mouseover", function() {
+      heading.style.color = "yellow";
+    });
+
+    heading.addEventListener("mouseout", function() {
+      heading.style.color = "black";
+    });
+
+    e
+    function showTime() {
+      const now = new Date();
+      const timeString = now.toLocaleString();
+      document.getElementById("timeDisplay").innerText = "Current Date & Time: " + timeString;
+    }
+
+    // Change background color
+    function changeColor(color) {
+      document.body.style.backgroundColor = color;
+    }
+  </script>
+
+</body>
+</html>
