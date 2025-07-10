@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+        <h1>CALLBACK DEMONSTRATE </h1>
+        <script>
+                let num1=parseInt(prompt("Enter num-1"));
+                let  num2=parseInt(prompt("Enter num-2"));
+
+                function print(ans){
+                        alert("Your sum is :"+ans);
+                }
+                function sum(num1s,num2s,mycallback){
+                     ans =num1s+num2s;
+                     mycallback(ans);
+                }
+                sum(num1,num2,print);
+
+        </script>
+</body>
+</html>

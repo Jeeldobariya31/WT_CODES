@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Quick Sort in JavaScript</title>
 </head>
 <body>
-        <h1>output here</h1>
-        <p id="dis"></p>
-         
-        <script>
-                let display=document.querySelector("#dis")
-                 let size=parseInt(prompt("Enter Array Size :"))
-                let array=[size]
-                for(i=0;i<size;i++){
-                  temp=parseInt(prompt("Enter Array element "+(i+1)+":"))
-                  array[i]=temp
-                }
-                function quickSort(arr) {
+    <h2>Quick Sort</h2>
+    <p>Enter numbers separated by commas:</p>
+    <input type="text" id="inputArray" placeholder="e.g. 5,3,8,1,2">
+    <button onclick="sortArray()">Sort</button>
+    <p id="result"></p>
+
+    <script>
+        function quickSort(arr) {
             if (arr.length <= 1) {
                 return arr;
             }
@@ -37,15 +32,10 @@
             return [quickSort(left), pivot, quickSort(right)];
         }
 
-        
+        function sortArray() {
             let sortedArray = quickSort(array);
-           string=""
-                 for (i = 0; i < size; i++) {
-                        
-                        temp=sortedArray[i]
-                        string=string+temp+" ,"
-                }
-                display.innerText=string
-        </script>
+            document.getElementById("result").innerText = "Sorted Array: " + sortedArray.join(", ");
+        }
+    </script>
 </body>
 </html>

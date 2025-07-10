@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Array Operations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CRUD Operations on Array</h2>
+  <input type="text" id="itemInput" placeholder="Enter item">
+  <button onclick="addItem()">Add</button>
+  <button onclick="updateItem()">Update</button>
+
+  <h3>Items List</h3>
+  <ul id="itemList"></ul>
+
+  <script>
+    let items = [];
+    let selectedIndex = -1;
+
+    function displayItems() {
+      const list = document.getElementById("itemList");
+      list.innerHTML = "";
+
+      items.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item}
+          <button onclick="editItem(${index})">Edit</button>
+          <button onclick="deleteItem(${index})">Delete</button>
+        `;
+        list.appendChild(li);
+      },0);
+    }
+
+    function addItem() {
+      const input = document.getElementById("itemInput");
+      const value = input.value.trim();
+      if (value) {
+        items.push(value); 
+        input.value = "";
+        displayItems();   
+      }
+    }
+
+    function editItem(index) {
+      document.getElementById("itemInput").value = items[index];
+      selectedIndex = index;
+    }
+
+    function updateItem() {
+      const input = document.getElementById("itemInput");
+      const value = input.value.trim();
+      if (selectedIndex >= 0 && value) {
+        items[selectedIndex] = value; 
+        selectedIndex = -1;
+        input.value = "";
+        displayItems();
+      }
+    }
+
+    function deleteItem(index) {
+      items.splice(index, 1);
+      displayItems();
+    }
+
+    displayItems();
+  </script>
+
+</body>
+</html>
