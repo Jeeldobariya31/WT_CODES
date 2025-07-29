@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAR List (XHR)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #mybtn {
+      padding: 12px 25px;
+      margin: 20px auto;
+      display: block;
+      background-color: darkkhaki;
+      color: black;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #mydiv {
+      display: none;
+      background-color: azure;
+      border: 2px solid black;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 220px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #555;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CAR LIST </h1>
+  <button id="mybtn">CLICK</button>
+
+  <div id="mydiv"></div>
+
+  <script>
+    document.getElementById("mybtn").addEventListener("click", function () {
+      const mydiv = document.getElementById("mydiv");
+
+      // Show loading spinner
+      mydiv.innerHTML = `
+        <div class="spinner"></div>
+        <div class="loading-text">Loading data...</div>
+      `;
+      mydiv.style.display = "flex";
+
+      // Create request
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "https://6881be7366a7eb81224bbf08.mockapi.io/student", true);
+
+      xhttp.onload = function () {
+        if (this.status === 200) {
+          const data = JSON.parse(this.responseText);
+          console.log(data);
+
+          const formattedStudents = data.map((s) => {
+            return `
+              <div class="card">
+                 <img src="${s.img}" alt="don't load" height="200px" width="200px">
+                <h3>${s.name}</h3>
+                <p><strong>Type:</strong> ${s.type}</p>
+                <p><strong>Fuel:</strong> ${s.fuel}</p>
+                <p><strong>Color:</strong> ${s.color}</p>
+                <p><strong>ID:</strong> ${s.id}</p>
+                <p><strong>BRAND:</strong> ${s.brand}</p>
+              </div>
+            `;
+          });
+
+          mydiv.innerHTML = formattedStudents.join("");
+        } else {
+          mydiv.innerHTML = `<p style='color:red; text-align:center;'>❌ Failed to load data (Status: ${this.status}).</p>`;
+        }
+      };
+
+      xhttp.onerror = function () {
+        mydiv.innerHTML = `<p style='color:red; text-align:center;'>❌ Network error occurred. Please try again later.</p>`;
+      };
+
+      xhttp.send();
+    });
+  </script>
+
+</body>
+</html>
