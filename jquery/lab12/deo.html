@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>jQuery Tasks Lab-12</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #1a73e8;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 16px;
+      margin: 5px 5px 5px 0;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #155ab6;
+    }
+    input {
+      padding: 10px;
+      width: 220px;
+      margin: 5px 10px 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    ul, table {
+      margin-top: 10px;
+    }
+    td, th {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 400px;
+    }
+    #fadeBox {
+      background: #0b417e;
+      padding: 20px;
+      width: 200px;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+    }
+    #slideImg {
+      display: block;
+      width: 150px;
+      margin-bottom: 10px;
+    }
+    .error {
+      color: red;
+      display: none;
+      font-size: 0.9em;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 1. Fade on click -->
+<section>
+  <h2>1. Fade Object on Click Btn</h2>
+  <div id="fadeBox"></div>
+  <br>
+  <button onclick="$('#fadeBox').fadeOut()">Fade Out</button>
+  <button onclick="$('#fadeBox').fadeIn()">Fade In</button>
+</section>
+
+<!-- 2. Slide effects -->
+<section>
+  <h2>2. Slide Up / Down / Toggle</h2>
+  <img id="slideImg" src="IMG20241105085846.jpg" alt="Slide Image">
+  <br>
+  <button id="slideUpBtn">Slide Up</button>
+  <button id="slideDownBtn">Slide Down</button>
+  <button id="slideToggleBtn">Toggle</button>
+</section>
+
+<!-- 3. Set h1 content -->
+<section>
+  <h2>3. Set Heading Text</h2>
+  <h1 id="header">Original Heading</h1>
+  <button id="setTextBtn">Set to Hello World</button>
+  <button onclick="$('#header').text('Original Heading')">Reset</button>
+</section>
+
+<!-- 4. Get textbox and set paragraph -->
+<section>
+  <h2>4. Set Paragraph</h2>
+  <input type="text" id="myInput" placeholder="Enter something...">
+  <button id="setParaBtn">Set Paragraph</button>
+  <button onclick="$('#myInput').val(''); $('.data').text('...')">Reset</button>
+  <p class="data">...</p>
+</section>
+
+<!-- 5. Append to unordered list with user input -->
+<section>
+  <h2>5. Append to List</h2>
+  <input type="text" id="listInput" placeholder="Enter list item...">
+  <button id="addListItem">Add to List</button>
+  <button onclick="resetList()">Reset</button>
+  <p id="listFeedback" class="error">Please enter a list item!</p>
+  <ul id="myList">
+    <li>Item List ...</li>
+  </ul>
+</section>
+
+<!-- 6. Append new row to table from user input -->
+<section>
+  <h2>6. Append Row to Table </h2>
+  <input type="text" id="tableName" placeholder="Enter Name">
+  <input type="text" id="tableRoll" placeholder="Enter Roll No">
+  <button id="addRowBtn">Add Row</button>
+  <button onclick="$('#myTable').html('<tr><th>Name</th><th>Roll</th></tr>')">Reset</button>
+  <p id="tableFeedback" class="error">Please enter both name and roll number!</p>
+  <table id="myTable">
+    <tr><th>Name</th><th>Roll</th></tr>
+  </table>
+</section>
+
+<!-- 7. Change background of children -->
+<section>
+  <h2>7. Change Background of Children</h2>
+  <div id="myDiv">
+    <div>Child 1</div>
+    <div>Child 2</div>
+  </div>
+  <button id="changeColorBtn">Change Color</button>
+  <button onclick="$('#myDiv').children().css({backgroundColor: 'white', color: '#000'})">Remove Color Of Children</button>
+
+</section>
+
+<!-- 8. Hide siblings -->
+<section>
+  <h2>8. Hide Siblings on Button Click</h2>
+  <div id="siblingsExample">
+    <span>One</span>
+    <button class="hideSiblings">Click Me</button>
+    <span>Two</span>
+    <span>Three</span>
+  </div>
+  <button onclick="$('#siblingsExample span').show()">Reset</button>
+</section>
+
+<!-- 9. CRUD with static array -->
+<section>
+  <h2>9. CRUD Operations (Student List)</h2>
+  <input type="text" id="stuName" placeholder="Student Name">
+  <input type="text" id="stuRoll" placeholder="Roll No">
+  <button id="addStudent">Add Student</button>
+  <button onclick="resetStudents()">Reset</button>
+  <ul id="studentList"></ul>
+</section>
+
+<script>
+  // 2. Slide Effects
+  $('#slideUpBtn').click(() => $('#slideImg').slideUp());
+  $('#slideDownBtn').click(() => $('#slideImg').slideDown());
+  $('#slideToggleBtn').click(() => $('#slideImg').slideToggle());
+
+  // 3. Set Heading
+  $('#setTextBtn').click(() => $('#header').text('Hello World'));
+
+  // 4. Textbox to Paragraph
+  $('#setParaBtn').click(() => {
+    let val = $('#myInput').val();
+    $('.data').text(val);
+  });
+
+  // 5. Append to List with input
+  $('#addListItem').click(() => {
+    let value = $('#listInput').val().trim();
+    if (value) {
+      $('#myList').append(`<li style="animation: fadeIn 0.3s ease;">${value}</li>`);
+      $('#listInput').val('');
+      $('#listFeedback').hide();
+    } else {
+      $('#listFeedback').fadeIn().delay(1500).fadeOut();
+    }
+  });
+
+  function resetList() {
+    $('#myList').html('<li>Item 1</li>');
+    $('#listInput').val('');
+    $('#listFeedback').hide();
+  }
+
+  // 6. Append row to table with input
+  $('#addRowBtn').click(() => {
+    const name = $('#tableName').val().trim();
+    const roll = $('#tableRoll').val().trim();
+    if (name && roll) {
+      $('#myTable').append(`<tr><td>${name}</td><td>${roll}</td></tr>`);
+      $('#tableName').val('');
+      $('#tableRoll').val('');
+      $('#tableFeedback').hide();
+    } else {
+      $('#tableFeedback').fadeIn().delay(1500).fadeOut();
+    }
+  });
+
+  // 7. Change Child Background
+  $('#changeColorBtn').click(() => {
+   $('#myDiv').children().css({
+  backgroundColor: '#0b417e',
+  color: 'white'
+});
+
+  });
+
+  // 8. Hide Siblings
+  $('.hideSiblings').click(function () {
+    $(this).siblings().hide();
+  });
+
+  // 9. CRUD Array
+  let students = [];
+
+  $('#addStudent').click(function () {
+    let name = $('#stuName').val();
+    let roll = $('#stuRoll').val();
+    if (name && roll) {
+      students.push({ name, roll });
+      updateStudentList();
+      $('#stuName, #stuRoll').val('');
+    }
+  });
+
+  function updateStudentList() {
+    $('#studentList').empty();
+    students.forEach((s, i) => {
+      $('#studentList').append(
+        `<li>${s.name} - ${s.roll} <button onclick="deleteStudent(${i})">Delete</button></li>`
+      );
+    });
+  }
+
+  window.deleteStudent = function(index) {
+    students.splice(index, 1);
+    updateStudentList();
+  };
+
+  function resetStudents() {
+    students = [];
+    updateStudentList();
+    $('#stuName, #stuRoll').val('');
+  }
+</script>
+
+</body>
+</html>

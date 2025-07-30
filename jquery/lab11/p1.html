@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>jQuery-Tasks Lab-1</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f6fc;
+      padding: 30px;
+      color: #505050;
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .section {
+      background: #ffffff;
+      padding: 20px 30px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    }
+
+    button {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #175075;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      transition: background-color 0.3s ease;
+    }
+
+    #myul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    #myul li {
+      background: #ecf0f1;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #myul li:hover {
+      background: #175075;
+    }
+
+    p {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    #mydiv {
+      background-color: #3498db6c;
+      color: black;
+      height: 300px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      border: 4px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h1>Hide, Show, Toggle</h1>
+    <h2 id="myId">JEEL</h2>
+    <button id="hide">Click to Hide</button>
+    <button id="show">Click to Show</button>
+    <button id="tog">Click to Toggle</button>
+  </div>
+
+  <div class="section">
+    <h1>Change Input Background</h1>
+    <input type="text" placeholder="First input" />
+    <input type="text" placeholder="Second input" />
+    <br />
+    <button id="cnangeinputcolor">Change Input Color</button>
+  </div>
+
+  <div class="section">
+    <h1>Paragraph Hover</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, culpa!
+      Necessitatibus explicabo unde ipsam recusandae porro optio libero quae,
+      aliquid sequi. Ex itaque quos quam eos dicta assumenda dolorum provident.
+    </p>
+  </div>
+
+  <div class="section">
+    <h1>Click List Items to Hide</h1>
+    <ul id="myul">
+      <li class="myli">Jeel</li>
+      <li class="myli">Smeet</li>
+      <li class="myli">Dhairya</li>
+      <li class="myli">Harpal</li>
+      <li class="myli">Shreyansh</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h1>Mouse X & Y Position (Click Box)</h1>
+    <div id="mydiv">Click inside this box</div>
+  </div>
+
+  <script>
+    // Hide
+    $("#hide").click(function () {
+      $("#myId").hide();
+   
+    });
+
+    // Show
+    $("#show").click(function () {
+      $("#myId").show();
+   
+    });
+
+    // Toggle
+    $("#tog").click(function () {
+      $("#myId").toggle();
+  
+    });
+
+    // Change input color
+    $("#cnangeinputcolor").click(function () {
+      $("input").css("background-color", "red");
+    });
+
+    // Hide list item on click
+    $(".myli").click(function () {
+      $(this).hide();
+
+    });
+
+    // Focus and blur input/background effect
+    $("input").focus(function () {
+      $(this).css("background-color", "lightgreen");
+    });
+
+    $("input").blur(function () {
+      $(this).css("background-color", "white");
+    });
+
+    // Paragraph hover
+    $("p").mouseenter(function () {
+      $(this).css("background-color", "lightcoral");
+    });
+
+    $("p").mouseleave(function () {
+      $(this).css("background-color", "white");
+    });
+
+    // Mouse X/Y position in box
+    $("#mydiv").click(function (e) {
+      $(this).html(`<h1>X : ${e.pageX} Y : ${e.pageY}</h1>`)
+    });
+  </script>
+</body>
+</html>
