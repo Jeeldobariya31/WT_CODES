@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student CRUD-jQuery Tasks Lab-13</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #1a73e8;
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="file"] {
+      padding: 10px;
+      width: 200px;
+      margin: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    label {
+      margin-left: 8px;
+    }
+    button {
+      padding: 10px 16px;
+      margin: 8px 8px 8px 0;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #155ab6;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background-color: #1a73e8;
+      color: white;
+    }
+    img {
+      height: 60px;
+      width: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <h2>Student CRUD Operations</h2>
+  <input type="text" id="fnName" placeholder="First Name">
+  <input type="text" id="lsName" placeholder="Last Name">
+  <input type="text" id="age" placeholder="Age">
+  <input type="text" id="sem" placeholder="Semester">
+  <input type="text" id="stuRoll" placeholder="Roll No">
+  <br>
+  <label for="img">Select Image</label>
+  <input type="file" id="img" accept="image/*">
+  <br>
+  <button id="addStudent">Add Student</button>
+  <button onclick="resetStudents()">Reset</button>
+
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Full Name</th>
+        <th>Age</th>
+        <th>Semester</th>
+        <th>Roll No</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="studentList"></tbody>
+  </table>
+</section>
+
+<script>
+  let students = [];
+  let editIndex = -1;
+
+  $('#addStudent').click(function () {
+    let fnname = $('#fnName').val().trim();
+    let lastname = $('#lsName').val().trim();
+    let age = $('#age').val().trim();
+    let sem = $('#sem').val().trim();
+    let roll = $('#stuRoll').val().trim();
+    let fileInput = $('#img')[0].files[0];
+
+    if (!fnname || !roll || !lastname || !sem || !age) {
+      alert('Please fill all fields.');
+      return;
+    }
+
+    let reader = new FileReader();
+    reader.onload = function (e) {
+      let imgSrc = e.target.result;
+
+      let studentData = { fnname, lastname, age, sem, roll, imgSrc };
+
+      if (editIndex >= 0) {
+        students[editIndex] = studentData;
+        editIndex = -1;
+        $('#addStudent').text("Add Student");
+      } else {
+        students.push(studentData);
+      }
+
+      updateStudentList();
+      $('#fnName, #lsName, #age, #sem, #stuRoll, #img').val('');
+    };
+
+    if (fileInput) {
+      reader.readAsDataURL(fileInput);
+    } else {
+      let imgSrc = editIndex >= 0 ? students[editIndex].imgSrc : '';
+      let studentData = { fnname, lastname, age, sem, roll, imgSrc };
+
+      if (editIndex >= 0) {
+        students[editIndex] = studentData;
+        editIndex = -1;
+        $('#addStudent').text("Add Student");
+      } else {
+        students.push(studentData);
+      }
+
+      updateStudentList();
+      $('#fnName, #lsName, #age, #sem, #stuRoll, #img').val('');
+    }
+  });
+
+  function updateStudentList() {
+    $('#studentList').empty();
+    students.forEach((s, i) => {
+      $('#studentList').append(`
+        <tr>
+          <td>${s.imgSrc ? `<img src="${s.imgSrc}" />` : '-'}</td>
+          <td>${s.fnname} ${s.lastname}</td>
+          <td>${s.age}</td>
+          <td>${s.sem}</td>
+          <td>${s.roll}</td>
+          <td><button onclick="deleteStudent(${i})">Delete</button></td>
+          <td><button onclick="editStudent(${i})">Edit</button></td>
+        </tr>
+      `);
+    });
+  }
+
+  function deleteStudent(index) {
+    if (confirm("Are you sure you want to delete this student?")) {
+      students.splice(index, 1);
+      updateStudentList();
+    }
+  }
+
+  function editStudent(index) {
+    const s = students[index];
+    $('#fnName').val(s.fnname);
+    $('#lsName').val(s.lastname);
+    $('#age').val(s.age);
+    $('#sem').val(s.sem);
+    $('#stuRoll').val(s.roll);
+    editIndex = index;
+    $('#addStudent').text("Update Student");
+  }
+
+  function resetStudents() {
+    if (confirm("Reset all students?")) {
+      students = [];
+      editIndex = -1;
+      $('#addStudent').text("Add Student");
+      updateStudentList();
+    }
+  }
+</script>
+</body>
+</html>
