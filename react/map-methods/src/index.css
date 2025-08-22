@@ -1,0 +1,747 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  perspective: 1000px;
+}
+
+/* Main container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  transform-style: preserve-3d;
+}
+
+/* Section headers */
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transform: translateZ(20px);
+  transition: all 0.3s ease;
+}
+
+h1:hover {
+  transform: translateZ(30px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Array Map Section */
+.array-map-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transform: translateZ(10px);
+  transition: all 0.4s ease;
+}
+
+.array-map-section:hover {
+  transform: translateZ(20px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.array-map-section h1 {
+  background: none;
+  color: #4a5568;
+  text-shadow: none;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.array-results {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateZ(5px);
+  transition: all 0.3s ease;
+}
+
+.array-results:hover {
+  transform: translateZ(15px) rotateY(1deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.array-results h2 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%) translateZ(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.array-results h2:hover {
+  transform: translateX(-50%) translateZ(20px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+  transform-style: preserve-3d;
+}
+
+li {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 1.2rem;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+
+li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+li:hover::before {
+  left: 100%;
+}
+
+li:hover {
+  transform: translateZ(20px) rotateY(10deg) rotateX(5deg) scale(1.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Car List Section */
+.car-list-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transform: translateZ(10px);
+  transition: all 0.4s ease;
+}
+
+.car-list-section:hover {
+  transform: translateZ(20px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.car-list-section h1 {
+  background: none;
+  color: #4a5568;
+  text-shadow: none;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Button styles */
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateZ(15px) scale(1.05) rotateY(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+}
+
+button:active {
+  transform: translateZ(5px) scale(0.98);
+}
+
+/* Disabled button state */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: translateZ(0) !important;
+  pointer-events: none;
+}
+
+button:disabled:hover {
+  transform: translateZ(0) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Car cards grid */
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  transform-style: preserve-3d;
+}
+
+.car-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateZ(0) rotateX(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.car-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.car-card:hover::before {
+  opacity: 1;
+}
+
+.car-card:hover {
+  transform: translateZ(30px) rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.car-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.car-card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.car-card h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-weight: 700;
+  transform: translateZ(5px);
+}
+
+.car-card p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(2px);
+}
+
+.car-card strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Students Section */
+.students-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transform: translateZ(10px);
+  transition: all 0.4s ease;
+}
+
+.students-section:hover {
+  transform: translateZ(20px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.students-section h1 {
+  background: none;
+  color: #4a5568;
+  text-shadow: none;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  transform-style: preserve-3d;
+}
+
+.student-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transform: translateZ(0) rotateX(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.student-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.student-card:hover::before {
+  opacity: 1;
+}
+
+.student-card:hover {
+  transform: translateZ(30px) rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.student-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  transform: translateZ(10px);
+}
+
+.student-card:hover .student-avatar {
+  transform: translateZ(20px) scale(1.1) rotateY(15deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.student-card h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-weight: 700;
+  transform: translateZ(5px);
+}
+
+.student-card p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(2px);
+}
+
+.student-card strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.grade {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transform: translateZ(5px);
+  transition: all 0.3s ease;
+}
+
+.grade:hover {
+  transform: translateZ(10px) scale(1.1);
+}
+
+.grade-A, .grade-A+ {
+  background: #48bb78;
+  color: white;
+}
+
+.grade-A- {
+  background: #38a169;
+  color: white;
+}
+
+.grade-B+ {
+  background: #4299e1;
+  color: white;
+}
+
+.grade-B {
+  background: #3182ce;
+  color: white;
+}
+
+.grade-B- {
+  background: #2b6cb0;
+  color: white;
+}
+
+/* Faculties Section */
+.faculties-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transform: translateZ(10px);
+  transition: all 0.4s ease;
+}
+
+.faculties-section:hover {
+  transform: translateZ(20px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.faculties-section h1 {
+  background: none;
+  color: #4a5568;
+  text-shadow: none;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.faculties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  transform-style: preserve-3d;
+}
+
+.faculty-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transform: translateZ(0) rotateX(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(238, 90, 36, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faculty-card:hover::before {
+  opacity: 1;
+}
+
+.faculty-card:hover {
+  transform: translateZ(30px) rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.faculty-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  transform: translateZ(10px);
+}
+
+.faculty-card:hover .faculty-avatar {
+  transform: translateZ(20px) scale(1.1) rotateY(15deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.faculty-card h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-weight: 700;
+  transform: translateZ(5px);
+}
+
+.faculty-card p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(2px);
+}
+
+.faculty-card strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.position {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transform: translateZ(5px);
+  transition: all 0.3s ease;
+}
+
+.position:hover {
+  transform: translateZ(10px) scale(1.1);
+}
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  transform: translateZ(10px);
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+  transform: translateZ(5px);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) translateZ(5px); }
+  100% { transform: rotate(360deg) translateZ(5px); }
+}
+
+.loading-text {
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transform: translateZ(5px);
+}
+
+/* Error message */
+.error-message {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  transform: translateZ(10px);
+  transition: all 0.3s ease;
+}
+
+.error-message:hover {
+  transform: translateZ(15px) scale(1.02);
+}
+
+/* Ensure sections don't interfere with button clicks */
+.array-map-section,
+.car-list-section,
+.students-section,
+.faculties-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section descriptions */
+.section-description {
+  text-align: center;
+  color: #4a5568;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateZ(5px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.section-description:hover {
+  transform: translateZ(10px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    padding: 15px;
+  }
+  
+  .car-grid,
+  .students-grid,
+  .faculties-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .student-card,
+  .faculty-card {
+    padding: 20px;
+  }
+  
+  .student-avatar,
+  .faculty-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  ul {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  li {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* 3D Animation Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateZ(10px) translateY(0px); }
+  50% { transform: translateZ(20px) translateY(-10px); }
+}
+
+@keyframes rotate3d {
+  0% { transform: translateZ(10px) rotateY(0deg); }
+  100% { transform: translateZ(10px) rotateY(360deg); }
+}
+
+/* Apply floating animation to sections */
+.array-map-section,
+.car-list-section,
+.students-section,
+.faculties-section {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Apply rotation animation to avatars on hover */
+.student-avatar:hover,
+.faculty-avatar:hover {
+  animation: rotate3d 2s linear infinite;
+}
